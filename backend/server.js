@@ -3,6 +3,10 @@ const cors = require('cors')
 const connectDb = require('./config/db');
 const foodRouter = require('./routes/foodRoute');
 const userRouter = require('./routes/userRoute');
+<<<<<<< HEAD
+=======
+const cartRouter = require('./routes/cartRoute');
+>>>>>>> feffc19 (Feat)
 require('dotenv').config();
 
 
@@ -23,6 +27,10 @@ connectDb();
 // api end point
 app.use('/api/food',foodRouter)
 app.use('/api/user',userRouter)
+<<<<<<< HEAD
+=======
+app.use('/api/cart',cartRouter)
+>>>>>>> feffc19 (Feat)
 
 
 
