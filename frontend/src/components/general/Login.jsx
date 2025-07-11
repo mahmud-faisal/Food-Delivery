@@ -26,7 +26,7 @@ const Login = ({setShowPop}) => {
     const response = await axios.post(`${url}/api/user/login`,data)
 
     if(response.data.success){
-      toast.success("Sign in successful!");
+      // toast.success("Sign in successful!");
       setToken(response.data.token);
       localStorage.setItem("token",response.data.token);
       setShowPop(false);
