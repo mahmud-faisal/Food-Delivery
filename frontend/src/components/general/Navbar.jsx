@@ -29,11 +29,6 @@ const Navbar = () => {
         <div className="cart-signin flex gap-4">
            <Link to='' className='text-2xl'>  <FaSearch /></Link>
            <Link to='/cart' className='text-2xl'><FaCartShopping /></Link>
-<<<<<<< HEAD
-            <p className='border border-primary-color rounded-4xl px-4 py-2 hover:bg-primary-color hover:text-white text-medium cursor-pointer' onClick={()=>setShowPop(true)}>Sign in</p>
-        </div>
-        {showPop? <><div className="absolute top-7/4 left-1/2 z-50 w-5/12 transform -translate-x-1/2"> <VerifyPop setShowPop={setShowPop}/> </div></>:<></>}
-=======
             <p className='border border-primary-color rounded-4xl px-4 py-2 hover:bg-primary-color hover:text-white text-medium cursor-pointer' onClick={() => setShowPop("login")}
             >Sign in</p>
         </div>
@@ -44,7 +39,6 @@ const Navbar = () => {
 )}
 
 
->>>>>>> feffc19 (Feat)
     </div>
     </>
   )

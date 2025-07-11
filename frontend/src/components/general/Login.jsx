@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-
-
-const Login = () => {
-  
-
-  return (
-    
-    
-    <form action="">
-
-        <input type="email" name="email" id="email" placeholder='Your Email' className='border border-gray-500 w-full p-2 rounded-lg my-2' /><br />
-       
-        <input type="Password" name="Password" id="Password" placeholder='Password' className='border border-gray-500 w-full p-2 rounded-lg my-2'/><br />
-        <input type="submit" value="Sign in " className='px-4 py-2 bg-primary-color w-full text-white rounded-lg'/>
-=======
 import React, { useContext, useState } from 'react'
 import { StoreContext } from '../../context/StoreContext'
 import axios from 'axios'
@@ -66,7 +48,6 @@ const Login = ({setShowPop}) => {
         <input type="password" onChange={onChangeHandler} name="password" id="password" placeholder='password' className='border border-gray-500 w-full p-2 rounded-lg my-2'/><br />
         <input type="submit" value="Sign in " className='px-4 py-2 bg-primary-color w-full text-white rounded-lg'/>
         
->>>>>>> feffc19 (Feat)
     </form>
 
   )
