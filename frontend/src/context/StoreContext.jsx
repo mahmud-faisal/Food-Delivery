@@ -17,9 +17,12 @@ const StoreContextProvider = (props)=>{
             setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
         }
         if(token){
-            await axios.post(url+"/api/cart/addToCart",{itemId},{headers:{token}})
+            const response = await axios.post(url+"/api/cart/add",{itemId},{headers:{token}});
+            if(response.data.success){
+                
+            }
         }
-        // console.log(cartItems)
+        console.log(cartItems)
     }
 
     const removeFromCart = async (itemId)=>{
@@ -30,10 +33,13 @@ const StoreContextProvider = (props)=>{
     }
 
     const getTotalCartAmount = ()=>{
+        
         let totalAmount = 0;
         for(const item in cartItems){
             if(cartItems[item]>0){
-                let itemInfo = foodList.find((product)=>product._id == item);
+                let itemInfo = food_list.find((product)=>{   
+                 return  product._id === item
+                });
                 totalAmount += itemInfo.price*cartItems[item];
             }
         }
@@ -42,8 +48,10 @@ const StoreContextProvider = (props)=>{
 
     const fetchFoodList = async()=>{
         const response = await axios.get(url+"/api/food/list");
+        // console.log(response)
         if(response.data.success){
             setFoodList(response.data.data);
+            
         }
         else{
             alert("Error!Products are not fetchinng...");
@@ -52,7 +60,7 @@ const StoreContextProvider = (props)=>{
 
     const loadCartData = async(token)=>{
         const response = await axios .post(url+"/api/cart/get",{},{headers:{token}});
-        setCartItems(response.data.cartData);
+        setCartItems(response.data.cartData ||{});
     }
 
     useEffect(()=>{
@@ -76,7 +84,9 @@ const StoreContextProvider = (props)=>{
         getTotalCartAmount,
         url,
         token,
-        setToken
+        setToken,
+        food_list,
+        fetchFoodList
     }
 
     return(

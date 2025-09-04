@@ -1,9 +1,14 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useContext } from 'react'
 import { Link } from 'react-router'
 import Promo from './Promo';
+import { StoreContext } from '../../context/StoreContext';
 
-const CostCal = ({subTotal}) => {
+const CostCal = ({navito}) => {
+  const {getTotalCartAmount} = useContext(StoreContext);
     const [deliveryCharge,setDeliveryCharge] = useState(0);
+
+    // const [subTotal,setSubtotal] = useState(0);
+    const subTotal = getTotalCartAmount(); 
     
   useEffect(() => {
     if (subTotal > 0) {
@@ -26,7 +31,7 @@ const CostCal = ({subTotal}) => {
             <div className="Total flex justify-between w-full">
                 <p className="">Total</p><p className="">${subTotal+deliveryCharge}</p>
             </div>
-           <Link to ='/delivery'> <div className="text-white bg-primary-color text-center rounded-lg py-2 mt-4 ">Proceed To Checkout</div></Link>
+           <Link to ={`/${navito}`}> <div className="text-white bg-primary-color text-center rounded-lg py-2 mt-4 ">Proceed To Checkout</div></Link>
             </div>
         </div>
        

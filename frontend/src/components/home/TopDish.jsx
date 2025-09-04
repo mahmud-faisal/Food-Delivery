@@ -1,12 +1,15 @@
-import React, { useContext } from 'react'
-import { assets, food_list } from '../../assets/frontend_assets/assets' 
+import React, { useContext, useEffect, useState } from 'react'
+import { assets} from '../../assets/frontend_assets/assets' 
 import { StoreContext } from '../../context/StoreContext'
+
 
 
 const TopDish = () => {
 
-  const {cartItems,addToCart,removeFromCart} = useContext(StoreContext);
+  const {cartItems,addToCart,removeFromCart,food_list,url} = useContext(StoreContext);
   
+
+// console.log(food_list)
   return (
     <div className='mb-12'>
         <h2 className="text-3xl font-bold mb-8">Top Dish Near You</h2>
@@ -14,7 +17,7 @@ const TopDish = () => {
             {food_list.map((item,index)=>{
                 return <div className="dish" key={index}>
                     <div className="img-holder relative">
-                    <img src={item.image} alt="" className='rounded-t-2xl'/>
+                    <img src={`${url}/uploads/${item.image}`} alt="" className='rounded-t-2xl'/>
                     {!cartItems[item._id]? <div className="add-item absolute bottom-2 right-4 px-3 py-1 bg-white rounded-full font-bold text-xl text-gray-700 cursor-pointer" onClick={()=>addToCart(item._id)} >+</div>
                     :
                     <div className="add-item absolute bottom-2 right-4 px-3 py-1 bg-white rounded-full font-bold text-xl text-gray-700"><span className="text-red-500 px-[10px]  rounded-full bg bg-red-200 cursor-pointer" onClick={()=>removeFromCart(item._id)}>-</span>  {cartItems[item._id]}  <span className="text-green-500 px-2  rounded-full bg bg-green-200 cursor-pointer" onClick ={()=>addToCart(item._id)}>  +  </span></div>}

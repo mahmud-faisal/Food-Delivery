@@ -6,18 +6,16 @@ import Promo from '../../components/cart/Promo';
 
 
 const Cart = () => {
-    const {cartItems} = useContext(StoreContext);
-    const [subTotal,setSubTotal]=useState(0);
-
-  
+   
     
   return (
    
      <div className='w-[1280px] mx-auto'>
       <div className="">
-      <ItemList cartItems={cartItems} setSubTotal={setSubTotal}/>
+      <ItemList />
       </div>
-     <div className="flex justify-between w-full"><div className="w-1/3 my-16"><CostCal subTotal={subTotal} /></div>
+      
+     <div className="flex justify-between w-full"><div className="w-1/3 my-16"><CostCal  navito={"delivery"} /></div>
      <Promo /></div>
      </div>
      

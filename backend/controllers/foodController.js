@@ -18,6 +18,7 @@ try{
     res.status(201).json({success: true,message:'Food item added successfully',food})
 }
 catch(err){
+    console.log(err.message)
     res.status(500).json({success: false,message:"Failed to add food item"});
 }
 
@@ -31,7 +32,7 @@ const listFood = async(req,res)=>{
         
     }
     catch(err){
-        console.log(err);
+        console.log(err.message);
         res.json({success:false,message:"Error"});
     }
 }
@@ -42,12 +43,13 @@ const removeFood = async(req,res)=>{
        const food = await foodModel.findByIdAndDelete(id);
        const imagePath = path.join(__dirname, '..', 'uploads', food.image);
        fs.unlink(imagePath, (err) => {
-         if (err) console.log("Image delete error:", err);
+         if (err) console.log("Image delete error:", err.message);
        });
    
        res.send({success:true,message:'Item is deleted'})
     }
     catch(err){
+        console.log(err.message)
         res.send({success:false,message:'Item is not deleted'})
     }
 }

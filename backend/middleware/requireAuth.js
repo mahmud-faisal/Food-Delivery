@@ -18,6 +18,7 @@ const requireAuth = (req,res,next)=>{
         req.user = id;
         next();
     }catch(error){
+        console.log(error.message)
         res.status(401).json({message: "Invalid token"});
     }
     

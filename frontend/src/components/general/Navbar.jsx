@@ -44,7 +44,7 @@ const Navbar = () => {
             <div className="navbar-profile relative group z-31">
               <img src={assets.profile_icon} alt="" />
               <ul className='absolute right-0 top-6 mt-2 hidden group-hover:block bg-amber-200  w-35 px-2'>
-                <li className=' py-2 cursor-pointer flex gap-2 '>
+                <li onClick={()=>navigate('/myorders')} className=' py-2 cursor-pointer flex gap-2 '>
                   <img src={assets.bag_icon} alt="" /><p>Orders</p>
                 </li>
                 <hr className='text-gray-400'/>
